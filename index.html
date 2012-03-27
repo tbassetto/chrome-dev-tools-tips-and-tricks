@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chrome Developer Tools</title>
+    <meta charset="utf-8">
+    <script src="slides.js"></script>
+  </head>
+  <style>
+    .slides.template-default > article:not(.nobackground):not(.biglogo) {
+      background: #fff !important;
+    }
+    .fill img {
+      width: 100%;
+      height: 100%;
+    }
+    .question h1 {
+      text-align: center;
+    }
+  </style>
+  <body style="display:none">
+    <section class="slides layout-regular template-default">
+      <article>
+        <img src="images/256-chrome.png" style="opacity: 0.5; position: absolute; right: 0; top: 0; width: 512px; z-index: -1">
+        <h1>
+          Chrome Developer Tools
+          <br>
+          en 15 minutes
+        </h1>
+        <p>
+          <em>France HTML5 meetup</em>
+          <br><br>
+          Thomas Bassetto
+          <br>
+          26 mars 2012
+        </p>
+      </article>
+
+      <article class="fill">
+        <h3>Jolicloud OS debugging :)</h3>
+        <p>
+          <img src="images/jolicloud.jpg">
+        </p>
+        <div class="source white">
+          Source: <a href="http://www.flickr.com/photos/codepo8/5420835267/">Christian Heilmann</a>
+        </div>
+      </article>
+
+      <article>
+        <h3>Thomas</h3>
+        <ul class="build">
+          <li>Developpeur JavaScript chez <a href="http://www.joshfire.com">Joshfire</a> <strong>(on recrute)</strong><br><br>
+          <a class="build" href="http://factory.joshfire.com"><img class="centered" style="height: 150px" src="http://joshfire.com/files/2012/02/slider-home-24.png"></a>
+        <a class="build" href="http://lemiroir.joshfire.com"><img class="centered" style="height: 150px" src="http://joshfire.com/files/2012/02/slider-home-31.png"></a></li>
+          <li><a href="http://parisjs.org">ParisJS</a></li>
+          <li><a href="http://www.meetup.com/PhoneGap-Paris/">PhoneGap Paris</a>  </li>
+        </ul>
+      </article>
+
+      <article>
+        <img src="images/canary-logo.png" style="opacity: 0.5; position: absolute; right: 0; top: 0; width: 512px; z-index: -1">
+        <h3>Chrome Canary</h3>
+        <ul>
+          <li><a href="http://tools.google.com/dlpage/chromesxs">http://tools.google.com/dlpage/chromesxs</a></li>
+          <li>Version <strong>expérimentale</strong></li>
+          <li>Se met à jour automatiquement (contrairement à Chromium)</li>
+          <li>Ne peut pas être mis navigateur par défaut</li>
+          <li>Utilise un "profil" différent de Chrome</li>
+        </ul>
+      </article>
+
+      <article>
+        <h3>WebKit Web Inspector sert de base à :</h3>
+        <ul>
+          <li><a href="http://code.google.com/chrome/devtools/docs/overview.html">Chrome Developer Tools</a></li>
+          <li><a href="https://developer.apple.com/technologies/safari/developer-tools.html">Safari Web Inspector</a></li>
+          <li><a href="http://devblog.blackberry.com/2011/06/debugging-blackberry-web-apps/">BlackBerry Web Inspector</a></li>
+          <li><a href="http://callback.github.com/callback-weinre/">Weinre</a></li>
+          <li><a href="http://labs.adobe.com/technologies/shadow/">Adobe Shadow</a></li>
+          <li><a href="http://www.iwebinspector.com/">iWebInspector</a></li>
+        </ul>
+      </article>
+
+      <!--
+      Utile seulement durant le talk
+      ==============================
+      <article class="question">
+        <h1>Qui utilise FireBug le plus souvent ?</h1>
+      </article>
+
+      <article class="question">
+        <h1>Qui utilise Web Inspector le plus souvent ?</h1>
+      </article>
+
+      <article class="question">
+        <h1>Qui n'utilise aucun des deux (ou un autre) le plus souvent ?</h1>
+      </article>
+    -->
+
+      <article>
+        <h3>Onglet Elements</h3>
+        <ul>
+          <li>Suppression de nœuds</li>
+          <li>Annuler/Recommencer</li>
+          <li>Glisser/déposer</li>
+          <li>Édition HTML (<code>F2</code>)</li>
+        </ul>
+        <img src="images/onglet_element.png" class="centered">
+      </article>
+
+      <article>
+        <h3><a href="http://getfirebug.com/wiki/index.php/Command_Line_API">Console API</a></h3>
+        <ul>
+          <li><code>console.log</code> n'est pas seul :)</li>
+          <li><code>console.log</code> accepte plusieurs arguments</li>
+          <li><pre>console.log('Name: %s, Intergalactic Credits: %d.', 'Alex', -100)
+// Name: Alex, Intergalactic Credits: -100.</pre></li>
+          <li><code>console.dir</code></li>
+          <li><code>console.time</code> et <code>console.timeEnd</code></li>
+          <li><code>console.group</code> et <code>console.groupEnd</code></li>
+          <!--
+          Exemple:
+          ========
+          for (var i = 0, ps = $$('p'), l = ps.length; i < l; i++) {
+            console.group('<p> n°' + i);
+            console.warn(ps[i].textContent);
+            console.log(ps[i]);
+            console.groupEnd();
+          }
+        -->
+          <li><code>console.count</code></li>
+          <li><a href="https://getfirebug.com/tests/console/joes-original/test.html">Exemples</a></li>
+        </ul>
+      </article>
+
+      <article>
+        <h3>Console</h3>
+        <ul>
+          <li>Peut-être appelé de n'impotre quel onglet via <code>ESC</code></li>
+          <li>Auto-complémention</li>
+          <li>Historique via <code>↑</code> et <code>↓</code></li>
+          <li>$(id)</li>
+          <li>$$(selecteur)</li>
+          <li>$0 — $4 : historique des nœuds sélectionnés</li>
+          <li><code>clear()</code></li>
+          <li><code>copy()</code></li>
+        </ul>
+      </article>
+
+      <article>
+        <img src="images/css_panel.png" style="opacity: 0.5; position: absolute; right: 20px; top: 20px; width: 384px; z-index: -1">
+        <h3>Panneau CSS</h3>
+        <ul>
+          <li>Auto-complétion</li>
+          <li>Palette de couleur</li>
+          <li>Créer un nouveau sélecteur</li>
+          <li>Édition de <code>:hover</code>, <code>:focus</code>, etc.</li>
+          <li>Incrémenter les valeurs avec les flèches (par 0.1, 1, 10, 100 avec combinaisons de <code>Shift</code>, <code>Alt</code>, etc.)</li>
+          <li>Clic sur le nom du fichier CSS pour avoir accès au diff + historique</li>
+        </ul>
+      </article>
+
+      <article>
+        <h3>Onglet Ressources (pour CSS)</h3>
+        <ul>
+          <li>Diff</li>
+          <li>Revenir à une version précédente</li>
+          <li>Sauvegarde dans un fichier</li>
+          <li>Édition libre</li>
+        </ul>
+        <img src="images/onglet_ressources.png" class="centered">
+      </article>
+
+      <article>
+        <h3>Préférences</h3>
+        <p style="font-size: 22px;">Roue dentée en bas à droite :  <img src="images/roue_dentee.png"></p>
+        <ul>
+          <li>Désativer le cache</li>
+          <li>Déplacer l'inspecteur dans la barre latérale à droite</li>
+          <li>Changer l'User-Agent</li>
+          <li>Simuler les touch events</li>
+          <li>Log XMLHttpRequests</li>
+          <li>Se souvenir des logs entre plusieurs chargements</li>
+        </ul>
+      </article>
+
+      <article>
+        <h3>JavaScript</h3>
+        <br>
+        <img src="images/pause_beautify_edit.png" class="centered">
+        <ul>
+          <li>Points d'arrêts pour à peu près tout !</li>
+          <li>Beautify</li>
+          <li>Édition libre (incompatible avec le code beautifié)</li>
+          <li>Pause lors d'exceptions (attention à jQuery)</li>
+          <li><code>debugger;</code></li>
+        </ul>
+      </article>
+
+      <article>
+        <h3>Extensions</h3>
+        <ul>
+          <li><a href="http://smus.com/extending-chrome-developer-tools">Ajout d'audits ou d'onglets</a></li>
+          <li><a href="http://code.google.com/speed/page-speed/docs/using_chrome.html">Page Speed</a></li>
+          <li><a href="https://github.com/NV/chrome-devtools-autosave">Autosave</a> ! (nécessite un serveur)</li>
+        </ul>
+      </article>
+
+      <article>
+        <h3>Divers</h3>
+        <ul>
+          <li><a href="chrome://net-internals/">chrome://net-internals/</a></li>
+          <li><a href="chrome://appcache-internals/">chrome://appcache-internals/</a></li>
+        </ul>
+      </article>
+
+      <article>
+        <h3>À venir</h3>
+        <ul>
+          <li><a href="http://www.html5rocks.com/en/tutorials/developertools/sourcemaps/">Source Maps</a></li>
+          <li>Snippets</li>
+        </ul>
+      </article>
+
+      <article>
+        <h1>Merci !</h1>
+        <ul>
+          <li><a href="http://twitter.com/tbassetto">@tbassetto</a></li>
+          <li><a href="http://joshfire.com">Joshfire.com</a> <strong></strong></li>
+        </ul>
+      </article>
+    </section>
+  </body>
+</html>
